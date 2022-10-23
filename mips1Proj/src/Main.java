@@ -8,7 +8,7 @@ import static net.mips.compiler.Scanner.EOF;
 public class Main {
     public static void main(String[] args) throws Exception {
 
-        var progfile = Path.of(System.getProperty("user.dir"), "pascalprog.mips1");
+        var progfile = Path.of(System.getProperty("user.dir"), "pascalprog.txt");
 
         var sc = new Scanner(progfile.toString());
 
