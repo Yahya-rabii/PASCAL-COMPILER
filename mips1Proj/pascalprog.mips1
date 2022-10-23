@@ -7,4 +7,5 @@ begin
     while x<y do begin read(y); x:=x+y+ta2 end;
     write(x);
     write(y);
+    @
 end

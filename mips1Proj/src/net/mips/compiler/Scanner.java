@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Scanner {
 
-    static final char EOF = '\0';
+    static public final char EOF = '\0';
     ArrayList<Symboles> motCles;
     Symboles symbCour;
     char carCour;
