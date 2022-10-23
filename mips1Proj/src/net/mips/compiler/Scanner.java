@@ -79,23 +79,17 @@ public class Scanner {
     public Tokens codagelex(String mot) throws IOException {
 
 
-        for (Symboles motCle : this.motCles) {
+        for (int i=0 ; i<this.motCles.size() ;i++) {
 
-            if (motCle.nom.equals(mot)) {
+            if (this.motCles.get(i).nom.equals(mot)) {
 
-                return motCle.token;
-
-            } else {
-
-                return Tokens.ID_TOKEN;
+                return this.motCles.get(i).token;
 
             }
 
-
         }
 
-
-        return null;
+        return Tokens.ID_TOKEN;
     }
 
 
