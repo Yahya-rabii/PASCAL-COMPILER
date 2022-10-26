@@ -25,6 +25,8 @@ public class Scanner {
 
             this.fluxSour = new FileReader(file);
             this.motCles = new ArrayList<>();
+            this.symbCour = new Symboles(this.codagelex(String.valueOf(this.get_carCour())), String.valueOf(this.get_carCour()));
+            System.out.println(this.symbCour.token);
 
         }
 
@@ -79,7 +81,7 @@ public class Scanner {
     public Tokens codagelex(String mot) throws IOException {
 
 
-        for (int i=0 ; i<this.motCles.size() ;i++) {
+        for (int i = 0; i < this.motCles.size(); i++) {
 
             if (this.motCles.get(i).nom.equals(mot)) {
 

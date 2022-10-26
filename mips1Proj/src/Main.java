@@ -21,10 +21,15 @@ public class Main {
 
 
         while (sc.get_carCour() != EOF) {
-            sc.symbsuiv();
-            ps.program();
+
+            //sc.symbsuiv();
             System.out.println("{    " + sc.get_symbCour().get_token().toString() + " ===> "  + sc.get_symbCour().get_nom() + "    }");
+            ps.vars();
 
         }
+
+
+
+
     }
 }

@@ -10,7 +10,6 @@ public class Parser {
 
 
         this.scanner = new Scanner(nomf);
-
     }
 
     public Scanner get_scanner() {
@@ -27,18 +26,17 @@ public class Parser {
 
     public void testeAccept(Tokens t, CodesErr c) throws Exception {
 
-        if (this.scanner.get_symbCour().token == t) {
+        System.out.println(this.scanner.symbCour.token +" : " + String.valueOf(this.scanner.symbCour.nom));
+
+        if (this.scanner.symbCour.get_token() == t) {
             this.scanner.symbsuiv();
         } else {
             throw new ErreurSyntaxique(c);
         }
-        scanner.lireCar();
 
     }
 
     public void program() throws Exception {
-
-    //this.scanner.symbCour=new Symboles(scanner.codagelex(String.valueOf(scanner.carCour)),CodesErr.PROGRAMM_ERR.get_errmessage());
 
         testeAccept(Tokens.PROGRAM_TOKEN, CodesErr.PROGRAMM_ERR);
         testeAccept(Tokens.ID_TOKEN, CodesErr.ID_ERR);
@@ -65,13 +63,27 @@ public class Parser {
 
         testeAccept(Tokens.CONST_TOKEN, CodesErr.CONST_ERR);
         testeAccept(Tokens.ID_TOKEN, CodesErr.ID_ERR);
-        testeAccept(Tokens.AFFEC_TOKEN, CodesErr.AFEC_ERR);
-        if (this.scanner.symbCour.token == Tokens.ID_TOKEN) {
-            testeAccept(Tokens.ID_TOKEN, CodesErr.ID_ERR);
 
-        } else if (this.scanner.symbCour.token == Tokens.VAR_TOKEN) {
+        if (this.scanner.symbCour.token == Tokens.PVIR_TOKEN) {
+            testeAccept(Tokens.PVIR_TOKEN, CodesErr.PVIR_ERR);
 
-            testeAccept(Tokens.VAR_TOKEN, CodesErr.VAR_ERR);
+        } else if (this.scanner.symbCour.token == Tokens.AFFEC_TOKEN) {
+
+            testeAccept(Tokens.AFFEC_TOKEN, CodesErr.AFEC_ERR);
+
+            if (this.scanner.symbCour.token == Tokens.ID_TOKEN) {
+                testeAccept(Tokens.ID_TOKEN, CodesErr.ID_ERR);
+                testeAccept(Tokens.PVIR_TOKEN, CodesErr.PVIR_ERR);
+
+
+            } else if (this.scanner.symbCour.token == Tokens.VAR_TOKEN) {
+
+                testeAccept(Tokens.NUM_TOKEN, CodesErr.NUM_ERR);
+                testeAccept(Tokens.PVIR_TOKEN, CodesErr.PVIR_ERR);
+
+            }
+
+
         }
 
     }
@@ -79,6 +91,7 @@ public class Parser {
 
     public void vars() throws Exception {
 
+        testeAccept(Tokens.VAR_TOKEN, CodesErr.VAR_ERR);
         testeAccept(Tokens.ID_TOKEN, CodesErr.ID_ERR);
 
         if (this.scanner.symbCour.token == Tokens.PVIR_TOKEN) {
@@ -93,7 +106,7 @@ public class Parser {
 
             } else if (this.scanner.symbCour.token == Tokens.VAR_TOKEN) {
 
-                testeAccept(Tokens.VAR_TOKEN, CodesErr.VAR_ERR);
+                testeAccept(Tokens.NUM_TOKEN, CodesErr.NUM_ERR);
             }
 
 
@@ -104,7 +117,6 @@ public class Parser {
 
     public void affec() throws Exception {
 
-        testeAccept(Tokens.CONST_TOKEN, CodesErr.CONST_ERR);
         testeAccept(Tokens.ID_TOKEN, CodesErr.ID_ERR);
         testeAccept(Tokens.AFFEC_TOKEN, CodesErr.AFEC_ERR);
 
@@ -113,7 +125,7 @@ public class Parser {
 
         } else if (this.scanner.symbCour.token == Tokens.VAR_TOKEN) {
 
-            testeAccept(Tokens.VAR_TOKEN, CodesErr.VAR_ERR);
+            testeAccept(Tokens.NUM_TOKEN, CodesErr.NUM_ERR);
         }
 
     }
@@ -125,13 +137,7 @@ public class Parser {
         testeAccept(Tokens.PARD_TOKEN, CodesErr.PARD_ERR);
         testeAccept(Tokens.ID_TOKEN, CodesErr.ID_ERR);
 
-        if (this.scanner.symbCour.token == Tokens.ID_TOKEN) {
-            testeAccept(Tokens.ID_TOKEN, CodesErr.ID_ERR);
 
-        } else if (this.scanner.symbCour.token == Tokens.VAR_TOKEN) {
-
-            testeAccept(Tokens.VAR_TOKEN, CodesErr.VAR_ERR);
-        }
 
     }
 
