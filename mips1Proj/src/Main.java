@@ -1,3 +1,4 @@
+import net.mips.compiler.Parser;
 import net.mips.compiler.Scanner;
 
 import java.nio.file.Path;
@@ -12,13 +13,16 @@ public class Main {
 
         var sc = new Scanner(progfile.toString());
 
+        var ps =new Parser(progfile.toString());
 
         sc.initMotsCles();
 
         sc.lireCar();
 
+
         while (sc.get_carCour() != EOF) {
             sc.symbsuiv();
+            ps.program();
             System.out.println("{    " + sc.get_symbCour().get_token().toString() + " ===> "  + sc.get_symbCour().get_nom() + "    }");
 
         }
