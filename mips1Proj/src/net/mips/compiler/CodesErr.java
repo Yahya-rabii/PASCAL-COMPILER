@@ -14,6 +14,11 @@ public enum CodesErr {
 
     AFEC_ERR("symbole := attendu !"),
     PNT_ERR("symbole . attendu !"),
+    SUP_ERR("symbole > attendu !"),
+    SUPEG_ERR("symbole >= attendu !"),
+    DIFF_ERR("symbole != attendu !"),
+    INF_ERR("symbole < attendu !"),
+    INFEG_ERR("symbole <= attendu !"),
 
     EG_ERR("symbole = attendu !"),
     NUM_ERR("Numero attendu !"),

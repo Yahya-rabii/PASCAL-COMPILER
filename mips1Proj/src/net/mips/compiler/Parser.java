@@ -8,8 +8,8 @@ public class Parser {
 
     public Parser(String nomf) throws IOException {
 
-
         this.scanner = new Scanner(nomf);
+
     }
 
     public Scanner get_scanner() {
@@ -26,7 +26,7 @@ public class Parser {
 
     public void testeAccept(Tokens t, CodesErr c) throws Exception {
 
-        System.out.println(this.scanner.symbCour.token +" : " + String.valueOf(this.scanner.symbCour.nom));
+        System.out.println(this.scanner.symbCour.token + " : " + String.valueOf(this.scanner.symbCour.nom));
 
         if (this.scanner.symbCour.get_token() == t) {
             this.scanner.symbsuiv();
@@ -131,12 +131,80 @@ public class Parser {
     }
 
 
-    public  void si() throws Exception {
+    public void si() throws Exception {
 
         testeAccept(Tokens.IF_TOKEN, CodesErr.IF_ERR);
         testeAccept(Tokens.PARD_TOKEN, CodesErr.PARD_ERR);
-        testeAccept(Tokens.ID_TOKEN, CodesErr.ID_ERR);
+        while (this.scanner.carCour != '{') {
+            testeAccept(Tokens.ID_TOKEN, CodesErr.ID_ERR);
 
+
+            switch (this.scanner.carCour) {
+                case '>' -> {
+
+                    this.scanner.lireCar();
+                    if (this.scanner.carCour == '=') {
+                        testeAccept(Tokens.INF_TOKEN, CodesErr.SUPEG_ERR);
+
+                    }
+                    testeAccept(Tokens.SUP_TOKEN, CodesErr.SUP_ERR);
+
+                }
+                case '<' -> {
+                    this.scanner.lireCar();
+                    if (this.scanner.carCour == '=') {
+                        testeAccept(Tokens.INFEG_TOKEN, CodesErr.INFEG_ERR);
+                    } else {
+                        testeAccept(Tokens.INF_TOKEN, CodesErr.INF_ERR);
+
+                    }
+                }
+
+                case '=' -> {
+                    this.scanner.lireCar();
+                    if (this.scanner.carCour == '=') {
+                        testeAccept(Tokens.EG_TOKEN, CodesErr.EG_ERR);
+
+                    }
+                }
+                case '!' -> {
+                    this.scanner.lireCar();
+                    if (this.scanner.carCour == '=') {
+                        testeAccept(Tokens.DIFF_TOKEN, CodesErr.DIFF_ERR);
+
+                    }
+
+                }
+
+
+                default -> {
+                    testeAccept(Tokens.ERR_TOKEN, CodesErr.IF_ERR);
+
+                }
+
+
+            }
+
+            if (this.scanner.get_symbCour().token == Tokens.ID_TOKEN) {
+
+                testeAccept(Tokens.ID_TOKEN, CodesErr.ID_ERR);
+
+
+            } else {
+                testeAccept(Tokens.NUM_TOKEN, CodesErr.NUM_ERR);
+            }
+
+            if (this.scanner.get_symbCour().get_token() == Tokens.AND_TOKEN || this.scanner.get_symbCour().get_token() == Tokens.OR_TOKEN) {
+
+
+            } else {
+
+                testeAccept(Tokens.ERR_TOKEN, CodesErr.IF_ERR);
+
+
+            }
+
+        }
 
 
     }
@@ -169,8 +237,81 @@ public class Parser {
 
     }
 
-    public void tantque() {
+    public void tantque() throws Exception {
 
+
+        testeAccept(Tokens.WHILE_TOKEN, CodesErr.WHILE_ERR);
+        testeAccept(Tokens.PARD_TOKEN, CodesErr.PARD_ERR);
+        while (this.scanner.carCour != '{') {
+            testeAccept(Tokens.ID_TOKEN, CodesErr.ID_ERR);
+
+
+            switch (this.scanner.carCour) {
+                case '>' -> {
+
+                    this.scanner.lireCar();
+                    if (this.scanner.carCour == '=') {
+                        testeAccept(Tokens.INF_TOKEN, CodesErr.SUPEG_ERR);
+
+                    }
+                    testeAccept(Tokens.SUP_TOKEN, CodesErr.SUP_ERR);
+
+                }
+                case '<' -> {
+                    this.scanner.lireCar();
+                    if (this.scanner.carCour == '=') {
+                        testeAccept(Tokens.INFEG_TOKEN, CodesErr.INFEG_ERR);
+                    } else {
+                        testeAccept(Tokens.INF_TOKEN, CodesErr.INF_ERR);
+
+                    }
+                }
+
+                case '=' -> {
+                    this.scanner.lireCar();
+                    if (this.scanner.carCour == '=') {
+                        testeAccept(Tokens.EG_TOKEN, CodesErr.EG_ERR);
+
+                    }
+                }
+                case '!' -> {
+                    this.scanner.lireCar();
+                    if (this.scanner.carCour == '=') {
+                        testeAccept(Tokens.DIFF_TOKEN, CodesErr.DIFF_ERR);
+
+                    }
+
+                }
+
+
+                default -> {
+                    testeAccept(Tokens.ERR_TOKEN, CodesErr.WHILE_ERR);
+
+                }
+
+
+            }
+
+            if (this.scanner.get_symbCour().token == Tokens.ID_TOKEN) {
+
+                testeAccept(Tokens.ID_TOKEN, CodesErr.ID_ERR);
+
+
+            } else {
+                testeAccept(Tokens.NUM_TOKEN, CodesErr.NUM_ERR);
+            }
+
+            if (this.scanner.get_symbCour().get_token() == Tokens.AND_TOKEN || this.scanner.get_symbCour().get_token() == Tokens.OR_TOKEN) {
+
+
+            } else {
+
+                testeAccept(Tokens.ERR_TOKEN, CodesErr.IF_ERR);
+
+
+            }
+
+        }
 
     }
 
