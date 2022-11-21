@@ -13,7 +13,7 @@ public class Parser {
 
     public void testAccept(Tokens t, CodesErr c) throws Exception {
         if (this.scanner.get_symbCour().get_token() == t) {
-            System.out.println(this.scanner.symbCour.token + " : " + this.scanner.symbCour.nom);
+           // System.out.println(this.scanner.symbCour.token + " : " + this.scanner.symbCour.nom);
             if (this.scanner.get_carCour() != EOF) this.scanner.symbsuiv();
         } else {
             throw new ErreurSyntaxique(c);

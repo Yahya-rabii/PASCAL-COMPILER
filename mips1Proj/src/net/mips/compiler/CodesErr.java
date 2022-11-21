@@ -11,9 +11,12 @@ public enum CodesErr {
     WHILE_ERR("mot cles while attendu !"), WRITE_ERR("mot cles write attendu !"), IF_ERR("mot cles if attendu !"),
     READ_ERR("mot read attendu !"), PARG_ERR("symbole ( attendu !"), PARD_ERR("symbole ) attendu !"),
     VIR_ERR("symbole , attendu !"), DIV_ERR("symbole / attendu !"), MUL_ERR("symbole * attendu !"),
-    MOIN_ERR("symbole - attendu !"), PLUS_ERR("symbole + attendu !"), END_ERR("mot cles end attendu !"), DO_ERR("mot cles do attendu !");
+    MOIN_ERR("symbole - attendu !"), PLUS_ERR("symbole + attendu !"), END_ERR("mot cles end attendu !"), DO_ERR("mot cles do attendu !"),
 
-
+    ID_pas_declarer ("ID_pas_declarer"),
+    ID_PROGRAMME_pres_def("ID programme deja utilise"),
+    ID_CONST_err("vous pouvez pas chager une constante"),
+    ID_DEJA_DEFINI("ID deja defini");
     private String message;
 
     CodesErr(String s) {message = s;}

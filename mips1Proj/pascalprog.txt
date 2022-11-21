@@ -1,10 +1,6 @@
-program test1;
-const ta1=21; ta2=13;
-var x, y;
+program test;
+const tata=12;
+var x;
 begin
-    x:=ta1 ;
-    read(y);
-    while x<y do begin read(y); x:=x+y+ta2 end;
-    write(x);
-    write(y);
+    read(tata);
 end.
