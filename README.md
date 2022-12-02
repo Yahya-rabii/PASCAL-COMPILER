@@ -1,3 +1,3 @@
 # LEXICAL-COMPILER
 
-## A simple pascal language compiler created using native java language
+## A simple pascal language compiler created using native java programming language 
