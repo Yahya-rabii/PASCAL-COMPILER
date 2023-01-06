@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/COMPILATION 2.iml" filepath="$PROJECT_DIR$/.idea/COMPILATION 2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tp1 + chap 1 + sc1/tp1 + chap 1 + sc1.iml" filepath="$PROJECT_DIR$/tp1 + chap 1 + sc1/tp1 + chap 1 + sc1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tp2 + chap 2 + sc2/tp2 + chap 2 + sc2.iml" filepath="$PROJECT_DIR$/tp2 + chap 2 + sc2/tp2 + chap 2 + sc2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tp3 + chap 3 + sc3/tp3 + chap 3 + sc3.iml" filepath="$PROJECT_DIR$/tp3 + chap 3 + sc3/tp3 + chap 3 + sc3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tp4 + chap 4 + sc4/tp4 + chap 4 + sc4.iml" filepath="$PROJECT_DIR$/tp4 + chap 4 + sc4/tp4 + chap 4 + sc4.iml" />
+    </modules>
+  </component>
+</project>

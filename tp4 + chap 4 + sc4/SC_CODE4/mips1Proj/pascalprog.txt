@@ -1,0 +1,9 @@
+program test;
+const tata=12;
+var x, z;
+begin
+    read(x);
+    z := x - tata + 44 *10;
+    write(z);
+    write(tata)
+end.

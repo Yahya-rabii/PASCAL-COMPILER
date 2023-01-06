@@ -68,6 +68,7 @@ public class Scanner {
         }
     }
 
+
     public void lireNombre() throws Exception {
         StringBuilder s = new StringBuilder();
         while (Character.isDigit(this.carCour) && this.carCour != ' ') {

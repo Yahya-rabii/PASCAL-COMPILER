@@ -5,15 +5,20 @@ import static net.mips.compiler.Scanner.EOF;
 public class Parser {
     Scanner scanner;
 
-    public Parser(String nomf) throws Exception {this.scanner = new Scanner(nomf);}
+    public Parser(String nomf) throws Exception {
+        this.scanner = new Scanner(nomf);
+    }
 
-    public Scanner get_scanner() {return this.scanner;}
+    public Scanner get_scanner() {
+        return this.scanner;
+    }
 
-    public void set_scanner(Scanner sc) {this.scanner = sc;}
+    public void set_scanner(Scanner sc) {
+        this.scanner = sc;
+    }
 
     public void testAccept(Tokens t, CodesErr c) throws Exception {
         if (this.scanner.get_symbCour().get_token() == t) {
-            //System.out.println(this.scanner.symbCour.token + " : " + this.scanner.symbCour.nom);
             if (this.scanner.get_carCour() != EOF) this.scanner.symbsuiv();
         } else {
             throw new ErreurSyntaxique(c);
@@ -116,10 +121,18 @@ public class Parser {
 
     private void relop() throws Exception {
         switch (this.scanner.get_symbCour().get_token()) {
-            case SUP_TOKEN -> {testAccept(Tokens.SUP_TOKEN, CodesErr.SUP_ERR);}
-            case SUPEG_TOKEN -> {testAccept(Tokens.SUPEG_TOKEN, CodesErr.SUPEG_ERR);}
-            case INF_TOKEN -> {testAccept(Tokens.INF_TOKEN, CodesErr.INF_ERR);}
-            case INFEG_TOKEN -> {testAccept(Tokens.INFEG_TOKEN, CodesErr.INFEG_ERR);}
+            case SUP_TOKEN -> {
+                testAccept(Tokens.SUP_TOKEN, CodesErr.SUP_ERR);
+            }
+            case SUPEG_TOKEN -> {
+                testAccept(Tokens.SUPEG_TOKEN, CodesErr.SUPEG_ERR);
+            }
+            case INF_TOKEN -> {
+                testAccept(Tokens.INF_TOKEN, CodesErr.INF_ERR);
+            }
+            case INFEG_TOKEN -> {
+                testAccept(Tokens.INFEG_TOKEN, CodesErr.INFEG_ERR);
+            }
             case EG_TOKEN -> {
                 this.scanner.lireCar();
                 testAccept(Tokens.EG_TOKEN, CodesErr.EG_ERR);
@@ -147,13 +160,34 @@ public class Parser {
             case BEGIN_TOKEN -> {
                 insts();
             }
-            case ID_TOKEN -> {affec();}
-            case IF_TOKEN -> {si();}
-            case WHILE_TOKEN -> {tantque();}
-            case WRITE_TOKEN -> {ecrire();}
-            case READ_TOKEN -> {lire();}
+            case ID_TOKEN -> {
+                affec();
+            }
+            case IF_TOKEN -> {
+                si();
+            }
+            case WHILE_TOKEN -> {
+                tantque();
+            }
+            case WRITE_TOKEN -> {
+                ecrire();
+            }
+            case READ_TOKEN -> {
+                lire();
+            }
         }
     }
+
+
+
+    public void term() throws Exception {
+        fact();
+        while (this.scanner.get_symbCour().get_token() == Tokens.MUL_TOKEN || this.scanner.get_symbCour().get_token() == Tokens.DIV_TOKEN) {
+            mulop();
+            fact();
+        }
+    }
+
 
     public void expr() throws Exception {
         term();
@@ -163,29 +197,41 @@ public class Parser {
         }
     }
 
-    public void term() throws Exception {
-        fact();
-        while (this.scanner.get_symbCour().get_token() == Tokens.MUL_TOKEN || this.scanner.get_symbCour().get_token() == Tokens.DIV_TOKEN) {mulop();fact();}
-    }
-
     public void addop() throws Exception {
         switch (this.scanner.get_symbCour().get_token()) {
-            case PLUS_TOKEN -> {testAccept(Tokens.PLUS_TOKEN, CodesErr.PLUS_ERR);}
-            case MOINS_TOKEN -> {testAccept(Tokens.MOINS_TOKEN, CodesErr.MOIN_ERR);}
+            case PLUS_TOKEN -> {
+                testAccept(Tokens.PLUS_TOKEN, CodesErr.PLUS_ERR);
+            }
+            case MOINS_TOKEN -> {
+                testAccept(Tokens.MOINS_TOKEN, CodesErr.MOIN_ERR);
+            }
         }
     }
 
     public void fact() throws Exception {
         switch (this.scanner.get_symbCour().get_token()) {
-            case ID_TOKEN -> {testAccept(Tokens.ID_TOKEN, CodesErr.ID_ERR);}
-            case NUM_TOKEN -> {testAccept(Tokens.NUM_TOKEN, CodesErr.NUM_ERR);}
-            case PARG_TOKEN -> {testAccept(Tokens.PARG_TOKEN, CodesErr.PARG_ERR);  expr();  testAccept(Tokens.PARD_TOKEN, CodesErr.PARD_ERR);}
+            case ID_TOKEN -> {
+                testAccept(Tokens.ID_TOKEN, CodesErr.ID_ERR);
+            }
+            case NUM_TOKEN -> {
+                testAccept(Tokens.NUM_TOKEN, CodesErr.NUM_ERR);
+            }
+            case PARG_TOKEN -> {
+                testAccept(Tokens.PARG_TOKEN, CodesErr.PARG_ERR);
+                expr();
+                testAccept(Tokens.PARD_TOKEN, CodesErr.PARD_ERR);
+            }
         }
     }
+
     public void mulop() throws Exception {
         switch (this.scanner.get_symbCour().get_token()) {
-            case MUL_TOKEN -> {testAccept(Tokens.MUL_TOKEN, CodesErr.MUL_ERR);}
-            case DIV_TOKEN -> {testAccept(Tokens.DIV_TOKEN, CodesErr.DIV_ERR);}
+            case MUL_TOKEN -> {
+                testAccept(Tokens.MUL_TOKEN, CodesErr.MUL_ERR);
+            }
+            case DIV_TOKEN -> {
+                testAccept(Tokens.DIV_TOKEN, CodesErr.DIV_ERR);
+            }
         }
     }
 }
