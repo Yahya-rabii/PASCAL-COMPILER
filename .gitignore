@@ -1,7 +1,6 @@
 
 
 
-./controles
-./examen
-./.gitignore
-
+.controles
+examen
+.gitignore
